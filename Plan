@@ -1,0 +1,164 @@
+ssh -i "Key_Pair_Sep_30_24.pem" ubuntu@ec2-54-188-14-185.us-west-2.compute.amazonaws.com 
+source myenv/bin/activate
+
+
+
+Oct 02, 24: Problem = No connection to EC2    
+            Solution: Added security rules to EC2: 
+
+					Click on the "Security" tab
+					Click on the security group link
+					Add an inbound rule:
+					Type: Custom TCP
+					Port Range: 8000 (or whatever port you're using)
+					Source: 0.0.0.0/0 (allows access from anywhere; restrict this for production use)
+
+
+Oct 02, 24: 
+
+# 1. Security:  chmod 400 Key_Pair_Sep_30_24.pem
+
+
+
+
+   a) Connecttion to EC2:
+    #ssh -i "Key_Pair_Sep_30_24.pem" ubuntu@ec2-35-86-136-42.us-west-2.compute.amazonaws.com  => Do not use this one: sep-29-24
+    
+    ssh -i "Key_Pair_Sep_30_24.pem" ubuntu@ec2-54-188-14-185.us-west-2.compute.amazonaws.com    
+
+   b) installations:
+   
+   sudo apt update
+   sudo apt install python3-pip python3-venv
+
+   c) VEnv:
+   
+   #python3 -m venv myenv
+   source myenv/bin/activate
+
+   d) 
+
+   pip install fastapi[all] tensorflow
+   sudo apt install uvicorn
+   # pip list
+   
+   e) file:
+   
+   touch main.py
+   nano main.py  # or vim main.py
+
+
+   f) python -m uvicorn main:app --reload
+
+   Load Uvicorn: 
+							a) python -m uvicorn main:app --reload
+							b) python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+
+              c) To kill the process: sudo lsof -i :8000
+                                      sudo kill -9 <PID>
+
+
+Sep 30: 24: 
+
+Problem: "Amplify Init"  => Not working
+
+Solution : Created a new AWS account  => Created a new user with Access Keys => Updated my access key at "micah@micah-Inspiron-15-5510:~/.aws$ nano credentials"
+
+                                      => Works
+            
+            a) Connect to EC2:
+                          # 1. Security:  chmod 400 Key_Pair_Sep_30_24.pem
+
+                          ssh -i "Key_Pair_Sep_30_24.pem" ubuntu@ec2-35-86-136-42.us-west-2.compute.amazonaws.com
+                          
+                          ssh -i "Key_Pair_Sep_30_24.pem" ubuntu@ec2-54-188-14-185.us-west-2.compute.amazonaws.com
+            
+            b) Problem Install TF  : not enough space for EC2.micro
+            
+               Solution Install TFLite
+            
+            c)  python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+            
+               python -m uvicorn main:app --host 0.0.0.0 --port 8001 --reload
+               
+               ps aux | grep uvicorn  
+               
+               sudo kill -9 <PID>
+
+
+           d) Now : I want to communicate with React  :
+           
+           
+           
+                 
+                 React : Local
+                 
+                 FastApi
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+
+                                      
+                                      
