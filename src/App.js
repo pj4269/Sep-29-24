@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 const App = () => {
     const [data, setData] = useState(null);
-
+    var URL = 'http://ec2-44-243-201-166.us-west-2.compute.amazonaws.com:8000/data'
     useEffect(() => {
         const fetchData = async () => {
             try {                                 
-                const response = await fetch('http://ec2-54-188-14-185.us-west-2.compute.amazonaws.com:8000/data');// <your-ec2-public-ip>
+                const response = await fetch('https://w3l78pk719.execute-api.us-west-2.amazonaws.com/dev');// <your-ec2-public-ip>
+                                             // http://ec2-44-243-201-166.us-west-2.compute.amazonaws.com:8000/data
+                                             //https://w3l78pk719.execute-api.us-west-2.amazonaws.com/dev
+                                             //https://w3l78pk719.execute-api.us-west-2.amazonaws.com/dev
                                               
                 if (!response.ok) {
                     throw new Error('Network response was not ok!');

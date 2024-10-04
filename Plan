@@ -1,7 +1,36 @@
-ssh -i "Key_Pair_Sep_30_24.pem" ubuntu@ec2-54-188-14-185.us-west-2.compute.amazonaws.com 
+ssh -i "Key_Pair_Sep_30_24.pem" ubuntu@ec2-54-218-66-226.us-west-2.compute.amazonaws.com
+
+
 source myenv/bin/activate
 
+EC2:  Sep_29_24  
 
+python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+          uvicorn main:app --host 0.0.0.0 --port 443 --ssl-keyfile "Key_Pair_Sep_30_24.pem" --ssl-certfile /path/to/cert.pem
+
+Test: http://ec2-54-218-66-226.us-west-2.compute.amazonaws.com:8000/data
+
+
+To kill the process: sudo lsof -i :8000
+                     sudo kill -9 <PID>
+                                      
+#################################################################
+
+
+
+Now: using amplify address :
+
+     Problem: App.js:9 Mixed Content: The page at 'https://main.d1tn01r48ir1v0.amplifyapp.com/' was loaded over HTTPS, but requested an insecure resource 
+             'http://ec2-54-188-14-185.us-west-2.compute.amazonaws.com:8000/data'. This request has been blocked; the content must be served over HTTPS.
+
+Oct 03, 24: Problem = "App.js:9 Mixed Content: The page at 'https://main.d1tn01r48ir1v0.amplifyapp.com/' was loaded over HTTPS,
+                      but requested an insecure resource 'http://ec2-54-188-14-185.us-west-2.compute.amazonaws.com:8000/data'.
+                      This request has been blocked; the content must be served over HTTPS."
+
+
+            Solution = "Use API Gateway"
+
+            Use ChatGPT
 
 Oct 02, 24: Problem = No connection to EC2    
             Solution: Added security rules to EC2: 
