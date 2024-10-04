@@ -12,7 +12,7 @@ const App = () => {
                                              //https://w3l78pk719.execute-api.us-west-2.amazonaws.com/dev
                                               
                 if (!response.ok) {
-                    throw new Error('Network response was not ok!');
+                    throw new Error('Network response was not ok!!!');
                 }
                 const result = await response.json();
                 setData(result);
